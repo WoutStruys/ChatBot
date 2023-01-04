@@ -9,11 +9,20 @@ from nltk.corpus import stopwords
 
 class Chatbot:
     def __init__(self):
-        self.model = pickle.load(open("model.pkl","rb"))
-        self.tokenizer = pickle.load(open("tokenizer.pkl", "rb"))
+        
+        self.model = self.open_model()
+        self.tokenizer = self.open_tokenizer()
         nltk.download('stopwords')
         self.emoji_dict = { 0 : "❤️‍🩹", 1 : "⚾", 2 : "😄", 3 : "😞", 4 : "🍴"}
         self.stop_words = set(stopwords.words("english"))
+        
+    def open_model(self):
+        with open("model.pkl","rb") as f:
+            return pickle.load(f)
+       
+    def open_tokenizer(self):
+        with open("tokenizer.pkl","rb") as f:
+            return pickle.load(f) 
         
     def predict_emoji(self, text: str):
         filtered_texts = []
