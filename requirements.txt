@@ -1,0 +1,9 @@
+numpy
+opencv-python-headless
+nltk
+emoji
+keras
+tensorflow
+streamlit
+streamlit_chat
+protobuf==3.20.*
